@@ -8,7 +8,7 @@ var helper = require('sendgrid').mail;
 var fromEmail = new helper.Email("abdul.fattah.hussein@ericsson.com", "Abdelfattah Antar");
 
 // Constants
-const PORT = 1337;
+const PORT = process.env.PORT || 1337;
 
 // App
 const app = express();
