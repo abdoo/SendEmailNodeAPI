@@ -4,14 +4,15 @@
   "description": "Using SendGrid to send emails",
   "author": "",
   "main": "index.js",
-  "engines":{
-      "node": ">=6.9.1"
+  "engines": {
+    "node": ">=6.9.1"
   },
   "scripts": {
     "start": "node index.js"
   },
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.17.2",
     "express": "^4.15.4",
     "sendgrid": "^5.2.0"
   }

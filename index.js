@@ -1,17 +1,24 @@
 'use strict';
 
 const express = require('express');
+var bodyParser = require('body-parser');
+
+
+var config = require('./config');
 
 var helper = require('sendgrid').mail;
 //var mail = new helper.Mail();
 
-var fromEmail = new helper.Email("abdul.fattah.hussein@ericsson.com", "Abdelfattah Antar");
+var fromEmail = new helper.Email(config.fromEmail, config.fromName);
 
 // Constants
-const PORT = 1337;
+const PORT = config.port;
 
 // App
 const app = express();
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 app.get('/', function (req, res) {
       res.send('Hello world\n');
@@ -20,10 +27,14 @@ app.get('/', function (req, res) {
 
 app.post('/sendEmail', function (req, res){
     var recipients = req.headers['emailrecipients'];
-    var Name = req.headers['fullName'];
     var subject = req.headers['emailsubjects'];
-    var toEmail = new helper.Email(recipients, Name);
-    var content = new helper.Content('text/plain','easy to go with NodeJS');
+    var toEmail = new helper.Email(recipients);
+
+    console.log(req.body);
+
+    var content = new helper.Content('text/html', JSON.stringify(req.body));
+
+    console.log(content);
 
     var mail = new helper.Mail(fromEmail, subject, toEmail, content);
 
@@ -43,9 +54,9 @@ app.post('/sendEmail', function (req, res){
           console.log(response.statusCode);
           console.log(response.body);
           console.log(response.headers);
+          res.send('Email sent');
     });
-    res.send('Email sent');
-
+    
 });
 
 app.listen(PORT);
