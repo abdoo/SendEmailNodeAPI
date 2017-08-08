@@ -8,7 +8,7 @@ var config = require('./config');
 var helper = require('sendgrid').mail;
 
 // Constants
-const PORT = process.env.PORT || 1337;
+const PORT = process.env.PORT || config.port;
 
 // App
 const app = express();
