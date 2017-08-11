@@ -3,7 +3,6 @@
 const express = require('express');
 var bodyParser = require('body-parser');
 
-
 var config = require('./config');
 
 var helper = require('sendgrid').mail;
@@ -14,8 +13,9 @@ const PORT = process.env.PORT || config.port;
 // App
 const app = express();
 
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 //app.use(bodyParser.json());
+app.use(bodyParser.text());
 
 
 var auth = function (req, res, next) {
@@ -90,6 +90,9 @@ app.post('/sendEmail', auth, function (req, res){
   mail.addPersonalization(personalization);
 
   var reqBody = req.body;
+  //console.log(req.body);
+  //console.log("===========================================");
+  //console.log(reqBody);
   if (reqBody === null || reqBody === {} ){
     var content = new helper.Content('text/plain', 'Please check error happened');      
   }
