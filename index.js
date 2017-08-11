@@ -89,7 +89,7 @@ app.post('/sendEmail', auth, function (req, res){
   mail.addPersonalization(personalization);
 
   var reqBody = req.body;
-  if (reqBody == null || reqBody == {} ){
+  if (reqBody === null || reqBody === {} ){
     var content = new helper.Content('text/plain', 'Please check error happened');      
   }
   else{
