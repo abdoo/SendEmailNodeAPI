@@ -1,5 +1,5 @@
 {
     "name": "req",
-    "type": "http",
-    "direction": "out"
+    "type": "httpTrigger",
+    "direction": "in"
 }
