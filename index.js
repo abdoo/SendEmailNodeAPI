@@ -93,7 +93,7 @@ app.post('/sendEmail', auth, function (req, res){
     var content = new helper.Content('text/plain', 'Please check error happened');      
   }
   else{
-    var content = new helper.Content('text/html', JSON.stringify(req.body));
+    var content = new helper.Content('text/html', JSON.stringify(reqBody));
   }
 
   mail.addContent(content);
