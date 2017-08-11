@@ -3,6 +3,7 @@
 const express = require('express');
 var bodyParser = require('body-parser');
 
+
 var config = require('./config');
 
 var helper = require('sendgrid').mail;
@@ -14,7 +15,7 @@ const PORT = process.env.PORT || config.port;
 const app = express();
 
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+//app.use(bodyParser.json());
 
 
 var auth = function (req, res, next) {
