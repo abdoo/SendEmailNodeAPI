@@ -5,6 +5,7 @@ EndPoint for AppIOT which uses Sendgrid for Sending Emails.
 ### Installation
 
 ```bash
+# Install all needed packages
 npm install
 
 # Starting the application
