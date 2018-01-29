@@ -29,7 +29,8 @@ var auth = function (req, res, next) {
     return res.sendStatus(401);
   };
 
-  // Designed for AppIOT authentication (ex. "Authorization: Basic : dGVzdDp0ZXN0MTIz")
+  // Designed for AppIOT authentication (ex. "Authorization: Basic : dGVzdDp0ZXN0MTIz") 
+  // TODO Deprecated and it should be updated
 
   var userPassword = new Buffer(req.headers.authorization.split(" ")[2], 'base64').toString();
 
